@@ -195,6 +195,22 @@
 </xsd:sequence>
 </xsd:complexType>
 </xsd:element>
+<xsd:element name="nciicCompareScan">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="inLicense" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="inConditions" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="1" name="inKey" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="nciicCompareScanResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="1" name="out" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
 <xsd:element name="nciicBirthplaceCompare">
 <xsd:complexType>
 <xsd:sequence>
@@ -377,6 +393,10 @@
     <wsdl:part name="parameters" element="tns:nciicCheckHotelResponse">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="nciicCompareScanResponse">
+    <wsdl:part name="parameters" element="tns:nciicCompareScanResponse">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="nciicBirthplaceCompareResponse">
     <wsdl:part name="parameters" element="tns:nciicBirthplaceCompareResponse">
     </wsdl:part>
@@ -403,6 +423,10 @@
   </wsdl:message>
   <wsdl:message name="nciicCheckGetPhoneRequest">
     <wsdl:part name="parameters" element="tns:nciicCheckGetPhone">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="nciicCompareScanRequest">
+    <wsdl:part name="parameters" element="tns:nciicCompareScan">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="nciicFmxxEntryRequest">
@@ -558,6 +582,12 @@
       <wsdl:input name="nciicKyxxEntryRequest" message="tns:nciicKyxxEntryRequest">
     </wsdl:input>
       <wsdl:output name="nciicKyxxEntryResponse" message="tns:nciicKyxxEntryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="nciicCompareScan">
+      <wsdl:input name="nciicCompareScanRequest" message="tns:nciicCompareScanRequest">
+    </wsdl:input>
+      <wsdl:output name="nciicCompareScanResponse" message="tns:nciicCompareScanResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="nciicBirthplaceCompare">
@@ -722,6 +752,15 @@
         <wsdlsoap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="nciicCompareScan">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="nciicCompareScanRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="nciicCompareScanResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="nciicBirthplaceCompare">
       <wsdlsoap:operation soapAction=""/>
       <wsdl:input name="nciicBirthplaceCompareRequest">
@@ -788,7 +827,7 @@
   </wsdl:binding>
   <wsdl:service name="NciicServices">
     <wsdl:port name="NciicServicesHttpPort" binding="tns:NciicServicesHttpBinding">
-      <wsdlsoap:address location="https://api.nciic.com.cn/nciic_ws/services/NciicServices"/>
+      <wsdlsoap:address location="https://ws.nciic.org.cn/nciic_ws/services/NciicServices"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
